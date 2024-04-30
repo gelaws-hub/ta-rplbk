@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-30T14:08:40.556Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="9kba3js9zxdv8E9lPW56" version="24.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-30T14:13:52.996Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="urmtXPIXcp0wagIp5wr9" version="24.3.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2022" dy="685" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2514" dy="967" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -287,6 +287,9 @@
         </mxCell>
         <mxCell id="xh-2HfI7lwQ8egLjd8nN-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xh-2HfI7lwQ8egLjd8nN-15" target="xh-2HfI7lwQ8egLjd8nN-95">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xh-2HfI7lwQ8egLjd8nN-100" value="Class Diagram" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="230" y="60" width="150" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
