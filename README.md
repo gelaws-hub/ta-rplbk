@@ -3,8 +3,8 @@
 `Muhamad Ibnu Fadhil` \
 `Putrandi Agung Prabowo` \
 `Fernanda Clementina` \
-`Muhammad Aufa Tsaqief`\
-`Muhammad Fatkhul Yakaria`\
+`Muhammad Aufa Tsaqief` \
+`Muhammad Fatkhul Yakaria` 
 
 # Diagrams
 <h2>Use Case Diagram</h2>
