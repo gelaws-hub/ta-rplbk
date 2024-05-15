@@ -30,7 +30,7 @@ const CircleComponent = () => {
     };
 
     axios
-      .post("http://localhost:5000/save", shapeData)
+      .post("https://shape-calculator-be.vercel.app/save", shapeData)
       .then((response) => {
         setPopupMessage("Success! Calculation saved.");
         console.log(response.data);

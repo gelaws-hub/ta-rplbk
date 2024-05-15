@@ -12,5 +12,5 @@ async function connectToDatabase() {
     console.error("Error connecting to MongoDB Atlas:", error);
   }
 }
-
+make 
 module.exports = connectToDatabase;

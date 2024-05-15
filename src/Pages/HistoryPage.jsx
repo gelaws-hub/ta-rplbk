@@ -10,7 +10,7 @@ const History = () => {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/history");
+      const response = await axios.get("https://shape-calculator-be.vercel.app/history");
       setCalculations(response.data);
     } catch (error) {
       console.error("There was an error fetching the history!", error);
@@ -19,7 +19,7 @@ const History = () => {
 
   const deleteCalculation = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delete/${id}`);
+      await axios.delete(`https://shape-calculator-be.vercel.app/delete/${id}`);
       fetchHistory(); // Refresh history after deletion
     } catch (error) {
       console.error("There was an error deleting the calculation!", error);

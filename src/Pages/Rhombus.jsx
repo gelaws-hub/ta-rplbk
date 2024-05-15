@@ -25,7 +25,7 @@ const Rhombus = () => {
       perimeter,
     };
     axios
-      .post("http://localhost:5000/save", shapeData)
+      .post("https://shape-calculator-be.vercel.app/save", shapeData)
       .then((response) => console.log(response.data))
       .catch((error) => console.error("There was an error!", error));
   };

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Calculation = require("./models/calculation");
+const Calculation = require("../models/calculation");
 
 router.post("/save", async (req, res) => {
   const { shape, parameters, area, perimeter } = req.body;
