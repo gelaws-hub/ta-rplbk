@@ -3,36 +3,36 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="h-screen p-4 flex flex-col bg-gray-800 text-white">
-      <h1 className="text-2xl font-bold mb-4">Shapes</h1>
-      <div className="flex flex-col flex-grow">
-        <NavLink to="/circle" className="mb-2" activeClassName="font-bold">
+    <nav className="h-auto p-4 flex bg-gray-800 text-white items-center gap-8 justify-between">
+      <div className="flex gap-1 overflow-auto font-semibold">
+        <NavLink to="/circle" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Circle
         </NavLink>
-        <NavLink to="/square" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/square" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Square
         </NavLink>
-        <NavLink to="/triangle" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/triangle" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Triangle
         </NavLink>
-        <NavLink to="/rectangle" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/rectangle" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Rectangle
         </NavLink>
-        <NavLink to="/ellipse" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/ellipse" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Ellipse
         </NavLink>
-        <NavLink to="/parallelogram" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/parallelogram" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Parallelogram
         </NavLink>
-        <NavLink to="/trapezoid" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/trapezoid" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Trapezoid
         </NavLink>
-        <NavLink to="/rhombus" className="mb-2" activeClassName="font-bold">
+        <NavLink to="/rhombus" className="hover:bg-sky-700 px-4 py-1 rounded-full">
           Rhombus
         </NavLink>
-        <div className="flex-grow"></div> {/* This will push History to the bottom */}
+        <div className="flex-grow"></div>{" "}
+        {/* This will push History to the bottom */}
       </div>
-      <NavLink to="/history" className="mt-auto" activeClassName="font-bold">
+      <NavLink to="/history" className="hover:bg-sky-700 px-4 py-1 rounded-full">
         History
       </NavLink>
     </nav>
