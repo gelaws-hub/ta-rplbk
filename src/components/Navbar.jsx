@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: "Parallelogram", to: "/parallelogram" },
     { name: "Trapezoid", to: "/trapezoid" },
     { name: "Rhombus", to: "/rhombus" },
-    { name: "History", to: "/history" }
+    { name: "History", to: "/history" },
   ];
 
   const styleIsActive = (isActive, linkName) => {
@@ -34,12 +34,16 @@ const Navbar = () => {
         ))}
         <div className="flex-grow"></div>
       </div>
-      <NavLink
-        to={links[links.length - 1].to}
-        className={({ isActive }) => styleIsActive(isActive, links[links.length - 1].name)}
-      >
-        {links[links.length - 1].name}
-      </NavLink>
+      <div className="flex gap-1 overflow-auto font-semibold">
+        <NavLink
+          to={links[links.length - 1].to}
+          className={({ isActive }) =>
+            styleIsActive(isActive, links[links.length - 1].name)
+          }
+        >
+          {links[links.length - 1].name}
+        </NavLink>
+      </div>
     </nav>
   );
 };

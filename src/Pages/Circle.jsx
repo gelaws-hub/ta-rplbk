@@ -101,7 +101,7 @@ const CircleComponent = () => {
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Circle Description</h2>
         <img
-          src={require("./img/Circle-withsegments.png")}
+          src={require("./img/Circle.png")}
           alt="Circle"
           className="mb-4 w-48 m-auto"
         />
