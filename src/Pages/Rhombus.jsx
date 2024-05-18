@@ -61,7 +61,11 @@ const RhombusComponent = () => {
       <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Rhombus Description</h2>
-        <img src="" alt="Rhombus" className="mb-4 w-48 m-auto" />
+        <img
+          src={require("./img/Rhombus.png")}
+          alt="Rhombus"
+          className="mb-4 w-72 m-auto"
+        />
         <p className="text-gray-700 text-justify">
           A rhombus is a quadrilateral with all sides of equal length. It
           differs from a square in that its angles are not right angles. The

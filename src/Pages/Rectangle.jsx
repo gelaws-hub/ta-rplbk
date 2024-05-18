@@ -92,7 +92,7 @@ const RectangleComponent = () => {
       <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Rectangle Description</h2>
-        <img src="" alt="Rectangle" className="mb-4 w-48 m-auto" />
+        <img src={require("./img/rectangle.jpg")} alt="Rectangle" className="mb-4 w-48 m-auto" />
         <p className="text-gray-700 text-justify">
           A rectangle is a quadrilateral with four right angles. It can also be
           defined as an equiangular quadrilateral, since equiangular means that

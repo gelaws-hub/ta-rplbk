@@ -96,9 +96,9 @@ const EllipseComponent = () => {
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Ellipse Description</h2>
         <img
-          // src={require("#")}
+          src={require("./img/Ellipse.png")}
           alt="Ellipse"
-          className="mb-4 w-48 m-auto"
+          className="mb-4 w-64 m-auto"
         />
         <p className="text-gray-700 text-justify">
           An ellipse is a curve in a plane surrounding two focal points such that the sum of the distances to the two focal points is constant for every point on the curve. The semi-major axis is the longest radius of an ellipse, and the semi-minor axis is the shortest. The area of an ellipse can be approximated using the formula π * semiMajorAxis * semiMinorAxis, and the perimeter can be approximated using a complex formula involving square roots and trigonometric functions.

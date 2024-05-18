@@ -88,7 +88,7 @@ const TriangleComponent = () => {
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Triangle Description</h2>
         <img
-          src=""
+          src={require("./img/triangle.png")}
           alt="Triangle"
           className="mb-4 w-48 m-auto"
         />

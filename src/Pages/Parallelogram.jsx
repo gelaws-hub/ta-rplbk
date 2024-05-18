@@ -93,9 +93,18 @@ const ParallelogramComponent = () => {
       <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Parallelogram Description</h2>
-        <img src="" alt="Parallelogram" className="mb-4 w-48 m-auto" />
+        <img
+          src={require("./img/Parallelogram.png")}
+          alt="Parallelogram"
+          className="mb-4 w-48 m-auto"
+        />
         <p className="text-gray-700 text-justify">
-          A parallelogram is a quadrilateral with opposite sides parallel and equal in length. The base of a parallelogram is any one of its sides, and the height is the perpendicular distance between the base and its opposite side. The area of a parallelogram can be calculated by multiplying the length of the base by the height. The perimeter of a parallelogram is the sum of all its side lengths.
+          A parallelogram is a quadrilateral with opposite sides parallel and
+          equal in length. The base of a parallelogram is any one of its sides,
+          and the height is the perpendicular distance between the base and its
+          opposite side. The area of a parallelogram can be calculated by
+          multiplying the length of the base by the height. The perimeter of a
+          parallelogram is the sum of all its side lengths.
         </p>
       </div>
       <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
