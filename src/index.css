@@ -776,6 +776,10 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1124,7 +1128,15 @@ video {
     display: flex;
   }
 
+  .sm\:hidden {
+    display: none;
+  }
+
   .sm\:h-auto {
     height: auto;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
   }
 }

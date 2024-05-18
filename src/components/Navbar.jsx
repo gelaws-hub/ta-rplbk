@@ -32,15 +32,20 @@ const Navbar = () => {
 
   return (
     <nav className="h-auto p-4 flex bg-gray-800 text-white items-center gap-8 justify-between">
-      <div className="flex gap-1 overflow-auto font-semibold
-      ">
+      <div
+        className="flex gap-1 overflow-auto font-semibold
+      "
+      >
         {links.slice(0, -1).map((link) => (
           <NavLink
             key={link.to}
             to={link.to}
             className={({ isActive }) => styleIsActive(isActive, link.name)}
           >
-            <img src={link.icon} alt={link.name} className="h-6 invert" />
+            <div className="flex flex-row overflow font-semibold">
+              <img src={link.icon} alt={link.name} className="h-6 invert mr-2" />{" "}
+              <p>{link.name}</p>
+            </div>
           </NavLink>
         ))}
         <div className="flex-grow"></div>
