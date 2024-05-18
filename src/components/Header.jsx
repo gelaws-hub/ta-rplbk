@@ -1,12 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
-      <header className="bg-gray-800 text-left text-white font-semibold text-3xl py-5 px-4">
-        <a href="/">
+      <header className="bg-slate-800 text-left text-white font-semibold text-3xl py-5 px-4">
+        <NavLink to="/" link="/">
           <h1>Shape Calculator</h1>
-        </a>
+        </NavLink>
       </header>
       <hr></hr>
     </>

@@ -18,8 +18,8 @@ const App = () => {
   return (
     <>
       <div className="h-screen">
-        <Header />
         <Router>
+          <Header />
           <Navbar />
           <div className="flex-1 p-4 min-h-screen">
             <Routes>

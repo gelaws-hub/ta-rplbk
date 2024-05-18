@@ -3,20 +3,21 @@ import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 
 // Import Images
-import CircleImage from "./img/Circle.png"
-import SquareImage from "./img/Square.gif"
-import TriangleImage from "./img/triangle.png"
-import RectangleImage from "./img/rectangle.jpg"
-import EllipseImage from "./img/Ellipse.png"
-import ParallelogramImage from "./img/Parallelogram.png"
-import TrapezoidImage from "./img/Trapezoid.png"
-import RhombusImage from "./img/Rhombus.png"
+import CircleImage from "./img/Circle.png";
+import SquareImage from "./img/Square.gif";
+import TriangleImage from "./img/triangle.png";
+import RectangleImage from "./img/rectangle.jpg";
+import EllipseImage from "./img/Ellipse.png";
+import ParallelogramImage from "./img/Parallelogram.png";
+import TrapezoidImage from "./img/Trapezoid.png";
+import RhombusImage from "./img/Rhombus.png";
 
 const History = () => {
   const [calculations, setCalculations] = useState([]);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentId, setCurrentId] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchHistory();
@@ -28,6 +29,7 @@ const History = () => {
         "https://shape-calculator-be.vercel.app/history"
       );
       setCalculations(response.data);
+      setIsLoading(false);
     } catch (error) {
       console.error("There was an error fetching the history!", error);
     }
@@ -86,14 +88,14 @@ const History = () => {
 
   // Map shapes to image URLs
   const shapeImages = {
-    Circle: CircleImage,
-    Ellipse: EllipseImage,
-    Parallelogram: ParallelogramImage,
-    Rectangle: RectangleImage,
-    Rhombus: RhombusImage,
-    Square: SquareImage,
-    Trapezoid: TrapezoidImage,
-    Triangle: TriangleImage,
+    circle: CircleImage,
+    ellipse: EllipseImage,
+    parallelogram: ParallelogramImage,
+    rectangle: RectangleImage,
+    rhombus: RhombusImage,
+    square: SquareImage,
+    trapezoid: TrapezoidImage,
+    triangle: TriangleImage,
   };
 
   return (
@@ -109,11 +111,10 @@ const History = () => {
           <strong className="font-bold">{successMessage}</strong>
         </div>
       )}
-      <div
-        className="history-container"
-        style={{ maxHeight: "500px" }}
-      >
-        {calculations.length > 0 ? (
+      <div className="history-container" style={{ maxHeight: "500px" }}>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : calculations.length > 0 ? (
           <div className="grid grid-cols-1 gap-4">
             {calculations.map((calculation) => (
               <div
@@ -154,7 +155,7 @@ const History = () => {
                   <img
                     src={shapeImages[calculation.shape]}
                     alt={calculation.shape}
-                    className="max-w-full h-auto"
+                    className="h-32"
                   />
                 </div>
               </div>
