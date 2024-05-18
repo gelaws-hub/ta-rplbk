@@ -66,6 +66,21 @@ const TrapezoidComponent = () => {
             </p>
           </section>
         )}
+        {base1 && base2 && height && (
+          <section className="mb-4">
+            <p className="mb-1">
+              Perimeter = base1 + base2 + 2 * sqrt(height^2 + ((base2 - base1) /
+              2)^2)
+            </p>
+            <p className="mb-1">
+              Perimeter = {base1} + {base2} + 2 * sqrt({height}^2 + (({base2} -{" "}
+              {base1}) / 2)^2)
+            </p>
+            <p>
+              Perimeter = <b>{perimeter.toFixed(2)}</b>
+            </p>
+          </section>
+        )}
       </>
     );
   };
@@ -84,7 +99,11 @@ const TrapezoidComponent = () => {
       <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Description */}
         <h2 className="text-2xl font-bold mb-4">Trapezoid Description</h2>
-        <img src={require("./img/Trapezoid.png")} alt="Trapezoid" className="mb-4 w-48 m-auto" />
+        <img
+          src={require("./img/Trapezoid.png")}
+          alt="Trapezoid"
+          className="mb-4 w-48 m-auto"
+        />
         <p className="text-gray-700 text-justify">
           A trapezoid is a quadrilateral with at least one pair of parallel
           sides. The parallel sides are called the bases, and the other two
