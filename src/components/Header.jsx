@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-slate-800 text-left text-white font-semibold text-3xl py-5 px-4">
-        <NavLink to="/" link="/">
+        <NavLink to="/" link="Homepage">
           <h1>Shape Calculator</h1>
         </NavLink>
       </header>
