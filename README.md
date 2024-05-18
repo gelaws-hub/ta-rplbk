@@ -1,4 +1,7 @@
 # ta-rplbk
+## 🔗 Deployed using Firebase
+https://ta-shape-calculator.web.app/
+
 # Anggota Kelompok
 `Muhamad Ibnu Fadhil` \
 `Putrandi Agung Prabowo` \
