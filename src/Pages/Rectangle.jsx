@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Rectangle } from "../design_patterns/shape_factory/shapes/Rectangle";
+import InfoShapeCard from "../components/InfoShapeCard";
 
 const RectangleComponent = () => {
   const [length, setLength] = useState("");
@@ -10,8 +11,12 @@ const RectangleComponent = () => {
   const [popupType, setPopupType] = useState("");
 
   useEffect(() => {
-    const newRectangle = new Rectangle(length, width);
-    setRectangle(newRectangle);
+    if (length && width) {
+      const newRectangle = new Rectangle(length, width);
+      setRectangle(newRectangle);
+    } else {
+      setRectangle(null);
+    }
   }, [length, width]);
 
   const saveResult = () => {
@@ -37,7 +42,6 @@ const RectangleComponent = () => {
         console.error("There was an error!", error);
       });
 
-    // Reset the popup message after a certain time
     setTimeout(() => {
       setPopupMessage(null);
     }, 3000);
@@ -79,29 +83,28 @@ const RectangleComponent = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto mt-8 p-4 relative">
+    <div className="max-w-screen-xl mx-auto mt-8 p-4 relative pb-20 mb-auto">
       {popupMessage && (
         <div
-          className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-md text-white ${
+          className={`fixed bottom-auto left-auto mt-2 mr-2 px-4 py-2 text-white rounded-md ${
             popupType === "success" ? "bg-green-500" : "bg-red-500"
           }`}
         >
           {popupMessage}
         </div>
       )}
-      <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
-        {/* Description */}
-        <h2 className="text-2xl font-bold mb-4">Rectangle Description</h2>
-        <img src={require("./img/rectangle.jpg")} alt="Rectangle" className="mb-4 w-48 m-auto" />
-        <p className="text-gray-700 text-justify">
-          A rectangle is a quadrilateral with four right angles. It can also be
-          defined as an equiangular quadrilateral, since equiangular means that
-          all of its angles are equal (360°/4 = 90°). It can also be defined as
-          a parallelogram containing a right angle. The opposite sides of a
-          rectangle are parallel and of equal length. This shape is often used
-          in building and engineering because of its stability and strength.
-        </p>
-      </div>
+      {/* Shape Card */}
+      <InfoShapeCard
+        title="Rectangle Description"
+        description="A rectangle is a quadrilateral with four right angles. It can also be
+        defined as an equiangular quadrilateral, since equiangular means that
+        all of its angles are equal (360°/4 = 90°). It can also be defined as
+        a parallelogram containing a right angle. The opposite sides of a
+        rectangle are parallel and of equal length. This shape is often used
+        in building and engineering because of its stability and strength."
+        imageSrc={require("./img/rectangle.jpg")}
+      />
+
       <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Calculator */}
         <h2 className="text-2xl font-bold mb-4">Rectangle Calculator</h2>

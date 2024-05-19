@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Square } from "../design_patterns/shape_factory/shapes/Square";
+import InfoShapeCard from "../components/InfoShapeCard";
 
 const SquareComponent = () => {
   const [sideLength, setSideLength] = useState("");
   const [square, setSquare] = useState(null);
   const [popupMessage, setPopupMessage] = useState(null);
+  const [popupType, setPopupType] = useState("");
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -33,10 +35,12 @@ const SquareComponent = () => {
       .post("https://shape-calculator-be.vercel.app/save", shapeData)
       .then((response) => {
         setPopupMessage("Success! Calculation saved.");
+        setPopupType("success");
         console.log(response.data);
       })
       .catch((error) => {
         setPopupMessage("Error! Failed to save calculation.");
+        setPopupType("error");
         console.error("There was an error!", error);
       });
 
@@ -46,32 +50,59 @@ const SquareComponent = () => {
     }, 3000);
   };
 
+  const renderCalculations = () => {
+    if (!square) return null;
+
+    const area = square.getArea();
+    const perimeter = square.getPerimeter();
+
+    return (
+      <>
+        {sideLength && (
+          <section className="mb-4">
+            <h3 className="text-xl font-bold mb-2">Calculations:</h3>
+            <p className="mb-1">
+              Area = sideLength<sup>2</sup>
+            </p>
+            <p className="mb-1">
+              Area = {sideLength}<sup>2</sup> = {area.toFixed(2)}
+            </p>
+            <p>
+              Area = <b>{area.toFixed(2)}</b>
+            </p>
+          </section>
+        )}
+        {sideLength && (
+          <section className="mb-4">
+            <p className="mb-1">Perimeter = 4 * sideLength</p>
+            <p className="mb-1">Perimeter = 4 * {sideLength}</p>
+            <p>
+              Perimeter = <b>{perimeter.toFixed(2)}</b>
+            </p>
+          </section>
+        )}
+      </>
+    );
+  };
+
   return (
-    <div className="max-w-screen-xl mx-auto mt-8 p-4">
+    <div className="max-w-screen-xl mx-auto mt-8 p-4 pb-20 relative mb-auto">
       {popupMessage && (
-        <div className="absolute top-0 right-0 mt-2 mr-2 px-4 py-2 bg-green-500 text-white rounded-md">
+        <div
+          className={`fixed bottom-auto left-auto mt-2 mr-2 px-4 py-2 text-white rounded-md ${
+            popupType === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
           {popupMessage}
         </div>
       )}
-      <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
-        {/* Description */}
-        <h2 className="text-2xl font-bold mb-4">Square Description</h2>
-        <img
-          src={require("./img/Square.gif")}
-          alt="Square"
-          className="mb-4 w-48 m-auto"
-        />
-        <p className="text-gray-700 text-justify">
-          In Euclidean geometry, a square is a regular quadrilateral, which
-          means that it has four sides of equal length and four equal angles
-          (90-degree angles, π/2 radian angles, or right angles). It can also be
-          defined as a rectangle with two equal-length adjacent sides. It is the
-          only regular polygon whose internal angle, central angle, and external
-          angle are all equal (90°), and whose diagonals are all equal in
-          length. A square with vertices ABCD would be denoted
-        </p>
-        {/* Add more description if needed */}
-      </div>
+      {/* Shape Card */}
+      <InfoShapeCard
+        title="Square Description"
+        description="In Euclidean geometry, a square is a regular quadrilateral, which means that it has four sides of equal length and four equal angles (90-degree angles, π/2 radian angles, or right angles). It can also be defined as a rectangle with two equal-length adjacent sides. It is the only regular polygon whose internal angle, central angle, and external angle are all equal (90°), and whose diagonals are all equal in length. A square with vertices ABCD would be denoted."
+        imageSrc={require("./img/Square.gif")}
+      />
+
       <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Calculator */}
         <h2 className="text-2xl font-bold mb-4">Square Calculator</h2>
@@ -89,36 +120,13 @@ const SquareComponent = () => {
             />
           </label>
         </form>
-        {square && (
-          <div>
-            <h3 className="text-xl font-bold mb-2">Calculations:</h3>
-            <section className="mb-4">
-              <p className="mb-1">
-                Area = sideLength<sup>2</sup>
-              </p>
-              <p className="mb-1">
-                Area = {sideLength}
-                <sup>2</sup> = {square.getArea().toFixed(2)}
-              </p>
-              <p>
-                Area = <b>{square.getArea().toFixed(2)}</b>
-              </p>
-            </section>
-            <section className="mb-4">
-              <p className="mb-1">Perimeter = 4 * sideLength</p>
-              <p className="mb-1">Perimeter = 4 * {sideLength}</p>
-              <p>
-                Perimeter = <b>{square.getPerimeter().toFixed(2)}</b>
-              </p>
-            </section>
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
-              onClick={saveResult}
-            >
-              Save
-            </button>
-          </div>
-        )}
+        {renderCalculations()}
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
+          onClick={saveResult}
+        >
+          Save
+        </button>
       </div>
     </div>
   );

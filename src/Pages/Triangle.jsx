@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Triangle } from "../design_patterns/shape_factory/shapes/Triangle";
+import InfoShapeCard from "../components/InfoShapeCard";
 
 const TriangleComponent = () => {
   const [base, setBase] = useState("");
@@ -10,10 +11,18 @@ const TriangleComponent = () => {
   const [side3, setSide3] = useState("");
   const [triangle, setTriangle] = useState(null);
   const [popupMessage, setPopupMessage] = useState(null);
+  const [popupType, setPopupType] = useState("");
 
   useEffect(() => {
-    const newTriangle = new Triangle(base, height, side1, side2, side3);
-    setTriangle(newTriangle);
+    if (base && height) {
+      const newTriangle = new Triangle(base, height, null, null, null);
+      setTriangle(newTriangle);
+    } else if (side1 && side2 && side3) {
+      const newTriangle = new Triangle(null, null, side1, side2, side3);
+      setTriangle(newTriangle);
+    } else {
+      setTriangle(null);
+    }
   }, [base, height, side1, side2, side3]);
 
   const saveResult = () => {
@@ -30,10 +39,12 @@ const TriangleComponent = () => {
       .post("https://shape-calculator-be.vercel.app/save", shapeData)
       .then((response) => {
         setPopupMessage("Success! Calculation saved.");
+        setPopupType("success");
         console.log(response.data);
       })
       .catch((error) => {
         setPopupMessage("Error! Failed to save calculation.");
+        setPopupType("error");
         console.error("There was an error!", error);
       });
 
@@ -64,6 +75,7 @@ const TriangleComponent = () => {
         )}
         {side1 && side2 && side3 && (
           <section className="mb-4">
+            <h3 className="text-xl font-bold mb-2">Calculations:</h3>
             <p className="mb-1">Perimeter = side1 + side2 + side3</p>
             <p className="mb-1">
               Perimeter = {side1} + {side2} + {side3}
@@ -78,24 +90,27 @@ const TriangleComponent = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto mt-8 p-4">
+    <div className="max-w-screen-xl mx-auto mt-8 p-4 relative pb-20 mb-auto">
       {popupMessage && (
-        <div className="absolute top-0 right-0 mt-2 mr-2 px-4 py-2 bg-green-500 text-white rounded-md">
+        <div
+          className={`fixed bottom-auto left-auto mt-2 mr-2 px-4 py-2 text-white rounded-md ${
+            popupType === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
           {popupMessage}
         </div>
       )}
-      <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
-        {/* Description */}
-        <h2 className="text-2xl font-bold mb-4">Triangle Description</h2>
-        <img
-          src={require("./img/triangle.png")}
-          alt="Triangle"
-          className="mb-4 w-48 m-auto"
-        />
-        <p className="text-gray-700 text-justify">
-          A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry. Triangles can be classified based on the lengths of their sides and the internal angles. The properties of triangles and their relations to each other make them fundamental in many areas of mathematics and science.
-        </p>
-      </div>
+      {/* Shape Card */}
+      <InfoShapeCard
+        title="Triangle Description"
+        description="A triangle is a polygon with three edges and three vertices. It is one
+        of the basic shapes in geometry. Triangles can be classified based on
+        the lengths of their sides and the internal angles. The properties of
+        triangles and their relations to each other make them fundamental in
+        many areas of mathematics and science."
+        imageSrc={require("./img/triangle.png")}
+      />
+
       <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
         {/* Calculator */}
         <h2 className="text-2xl font-bold mb-4">Triangle Calculator</h2>

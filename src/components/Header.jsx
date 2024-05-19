@@ -4,12 +4,11 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <header className="bg-slate-800 text-left text-white font-semibold text-3xl py-5 px-4">
+      <header className="text-xl text-center bg-slate-800 md:text-left text-white font-semibold md:text-3xl py-5 px-4 shadow-md">
         <NavLink to="/" link="Homepage">
           <h1>Shape Calculator</h1>
         </NavLink>
       </header>
-      <hr></hr>
     </>
   );
 };

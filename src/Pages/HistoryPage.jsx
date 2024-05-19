@@ -99,7 +99,7 @@ const History = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 min-h-screen overflow-auto">
+    <div className="container mx-auto p-4 mb-auto pb-20">
       <h2 className="text-2xl font-bold mb-4 p-5 bg-white rounded-lg shadow-md border border-gray-200">
         Calculation History
       </h2>
@@ -111,60 +111,58 @@ const History = () => {
           <strong className="font-bold">{successMessage}</strong>
         </div>
       )}
-      <div className="history-container" style={{ maxHeight: "500px" }}>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : calculations.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4">
-            {calculations.map((calculation) => (
-              <div
-                key={calculation._id}
-                className="bg-white rounded-lg shadow-md p-4 border border-gray-200 flex"
-              >
-                <div className="w-3/5">
-                  <p>
-                    Shape : <strong>{calculation.shape}</strong>
-                  </p>
-                  <div>
-                    {Object.entries(calculation.parameters).map(
-                      ([key, value]) => (
-                        <p key={key}>
-                          {key} : <strong>{value}</strong>
-                        </p>
-                      )
-                    )}
-                  </div>
-                  <p>
-                    Area : <strong> {calculation.area.toFixed(2)}</strong>
-                  </p>
-                  <p>
-                    Perimeter :{" "}
-                    <strong> {calculation.perimeter.toFixed(2)}</strong>
-                  </p>
-                  <p>
-                    Date : <strong> {formatDate(calculation.date)}</strong>
-                  </p>
-                  <button
-                    className="mt-2 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
-                    onClick={() => confirmDeletion(calculation._id)}
-                  >
-                    Delete
-                  </button>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : calculations.length > 0 ? (
+        <div className="grid grid-cols-1 gap-4">
+          {calculations.map((calculation) => (
+            <div
+              key={calculation._id}
+              className="bg-white rounded-lg shadow-md p-4 border border-gray-200 flex"
+            >
+              <div className="w-3/5 text-xs md:text-lg">
+                <p>
+                  Shape : <strong>{calculation.shape}</strong>
+                </p>
+                <div>
+                  {Object.entries(calculation.parameters).map(
+                    ([key, value]) => (
+                      <p key={key}>
+                        {key} : <strong>{value !== null ? value : '-' }</strong>
+                      </p>
+                    )
+                  )}
                 </div>
-                <div className="w-2/5 flex justify-center items-center">
-                  <img
-                    src={shapeImages[calculation.shape]}
-                    alt={calculation.shape}
-                    className="h-32"
-                  />
-                </div>
+                <p>
+                  Area : <strong> {calculation.area !== null ? calculation.area.toFixed(2) : '-'}</strong>
+                </p>
+                <p>
+                  Perimeter :{" "}
+                  <strong> {calculation.perimeter !== null ? calculation.perimeter.toFixed(2) : '-'}</strong>
+                </p>
+                <p>
+                  Date : <strong> {formatDate(calculation.date)}</strong>
+                </p>
+                <button
+                  className="mt-2 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
+                  onClick={() => confirmDeletion(calculation._id)}
+                >
+                  Delete
+                </button>
               </div>
-            ))}
-          </div>
-        ) : (
-          <p>No calculations found</p>
-        )}
-      </div>
+              <div className="sm:w-2/5 flex justify-center items-center">
+                <img
+                  src={shapeImages[calculation.shape]}
+                  alt={calculation.shape}
+                  className="sm:h-32 h-24"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No calculations found</p>
+      )}
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={handleCloseDeleteModal}

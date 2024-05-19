@@ -9,6 +9,7 @@ import parallelogramImage from "./home_img/Parallelogram.jpg";
 import trapezoidImage from "./home_img/Trapezoid.jpg";
 import rhombusImage from "./home_img/Rhombus.jpg";
 import historyImage from "./home_img/history.png";
+import Cover from "./home_img/Cover.png";
 
 const pages = [
   { name: "Circle", to: "/circle", image: circleImage },
@@ -24,16 +25,25 @@ const pages = [
 
 const HomePage = () => {
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Shape Calculator is Awesome!
+    <div className="container mx-auto p-4 mb-auto flex flex-col">
+      <h1 className="text-lg md:text-3xl font-bold text-center mb-8">
+        Shape Calculator is
+        <br />
+        Awesome!
       </h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="mx-auto mb-4 ">
+        <img className="max-h-96 m-0 rounded-2xl hover:shadow-lg" src={Cover} alt="Cover" />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-20">
         {pages.map((page, index) => (
           <Link to={page.to} key={index}>
-            <div className="flex flex-col items-center justify-center border rounded-lg p-4 transition duration-300 hover:shadow-lg">
-              <img src={page.image} alt={page.name} className="h-32 mb-2" />
-              <h2 className="text-center">{page.name}</h2>
+            <div
+              className="
+            h-24
+            flex flex-col items-center justify-center border rounded-lg
+            p-4 transition duration-300 hover:shadow-lg md:h-auto"
+            >
+              <img src={page.image} alt={page.name} className="h-20 m-0" />
             </div>
           </Link>
         ))}

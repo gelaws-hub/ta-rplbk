@@ -47,7 +47,7 @@ const MainContainer = () => {
     <div {...handlers} className="h-screen flex flex-col">
       <Header />
       <Navbar />
-      <div className="flex-1 p-4 min-h-screen">
+      {/* <div className="flex-1 p-4 min-h-screen"> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/history" element={<HistoryPage />} />
@@ -60,7 +60,7 @@ const MainContainer = () => {
           <Route path="/trapezoid" element={<Trapezoid />} />
           <Route path="/rhombus" element={<Rhombus />} />
         </Routes>
-      </div>
+      {/* </div> */}
       <Footer />
     </div>
   );

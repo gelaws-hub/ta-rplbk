@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Rhombus } from "../design_patterns/shape_factory/shapes/Rhombus";
+import InfoShapeCard from "../components/InfoShapeCard";
 
 const RhombusComponent = () => {
   const [diagonal1, setDiagonal1] = useState("");
@@ -48,32 +49,23 @@ const RhombusComponent = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto mt-8 p-4 relative">
+    <div className="max-w-screen-xl mx-auto mt-8 p-4 relative pb-20 mb-auto">
       {popupMessage && (
         <div
-          className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-md text-white ${
+          className={`fixed bottom-auto left-auto mt-2 mr-2 px-4 py-2 text-white rounded-md ${
             popupType === "success" ? "bg-green-500" : "bg-red-500"
           }`}
         >
           {popupMessage}
         </div>
       )}
-      <div className="flex flex-col mb-8 p-4 bg-gray-100 border border-gray-300 rounded-md">
-        {/* Description */}
-        <h2 className="text-2xl font-bold mb-4">Rhombus Description</h2>
-        <img
-          src={require("./img/Rhombus.png")}
-          alt="Rhombus"
-          className="mb-4 w-72 m-auto"
-        />
-        <p className="text-gray-700 text-justify">
-          A rhombus is a quadrilateral with all sides of equal length. It
-          differs from a square in that its angles are not right angles. The
-          diagonals of a rhombus bisect each other at right angles.
-        </p>
-      </div>
+      <InfoShapeCard
+        title="Rhombus Description"
+        imageSrc={require("./img/Rhombus.png")}
+        imgAlt="Rhombus"
+        description="A rhombus is a quadrilateral with all sides of equal length. It differs from a square in that its angles are not right angles. The diagonals of a rhombus bisect each other at right angles."
+      />
       <div className="p-4 bg-gray-100 border border-gray-300 rounded-md">
-        {/* Calculator */}
         <h2 className="text-2xl font-bold mb-4">Rhombus Calculator</h2>
         <form className="mb-4">
           <label className="block mb-2">
