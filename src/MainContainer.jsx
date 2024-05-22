@@ -12,6 +12,7 @@ import Parallelogram from "./Pages/Parallelogram";
 import Trapezoid from "./Pages/Trapezoid";
 import Rhombus from "./Pages/Rhombus";
 import HistoryPage from "./Pages/HistoryPage";
+import HelpPage from "./Pages/HelpPage";
 import Homepage from "./Pages/HomePage";
 
 const MainContainer = () => {
@@ -21,6 +22,7 @@ const MainContainer = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/help" element={<HelpPage />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/circle" element={<Circle />} />
         <Route path="/square" element={<Square />} />

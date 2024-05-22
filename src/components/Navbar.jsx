@@ -29,28 +29,13 @@ const Navbar = () => {
     { name: "Trapezoid", to: "/trapezoid", icon: trapezoidIcon },
     { name: "Rhombus", to: "/rhombus", icon: rhombusIcon },
     { name: "History", to: "/history" },
-    { name: "FAQ", to: "/faq" },
+    { name: "Help", to: "/help" },
   ];
 
   const mobileLinks = [
-    {
-      name: "Home",
-      to: "/",
-      icon: <HiHome size={32} />,
-      outlineIcon: <HiOutlineHome size={32} />,
-    },
-    {
-      name: "History",
-      to: "/history",
-      icon: <HiArchive size={32} />,
-      outlineIcon: <HiOutlineArchive size={32} />,
-    },
-    {
-      name: "FAQ",
-      to: "/faq",
-      icon: <HiQuestionMarkCircle size={32} />,
-      outlineIcon: <HiOutlineQuestionMarkCircle size={32} />,
-    },
+    { name: "HomePage", to: "/", icon: <HiHome />, outlineIcon: <HiOutlineHome /> },
+    { name: "History", to: "/history", icon: <HiArchive />, outlineIcon: <HiOutlineArchive /> },
+    { name: "FAQ", to: "/faq", icon: <HiQuestionMarkCircle />, outlineIcon: <HiOutlineQuestionMarkCircle /> },
   ];
 
   const styleIsActive = (isActive) => {
@@ -61,68 +46,50 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="hidden md:h-auto md:p-4 md:flex md:flex-wrap bg-gray-800 md:text-white md:items-center md:gap-8 md:justify-between">
-        <div className="flex gap-1 overflow-auto font-normal flex-wrap">
-          {links.slice(0, -2).map((link) => (
+      <nav className="hidden md:h-auto md:p-4 md:flex bg-gray-800 md:text-white md:items-center md:gap-8 md:justify-between">
+        <div className="flex gap-1 overflow-auto font-semibold">
+          {links.slice(0, -1).map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) => styleIsActive(isActive)}
             >
               {({ isActive }) => (
-                <div className="flex flex-row font-normal m-auto">
+                <div className="flex flex-row overflow font-semibold">
                   <img
                     src={link.icon}
                     alt={link.name}
-                    className={`h-6 ${isActive ? "" : "invert"} mr-2`}
+                    className={`h-6 ${isActive ? '' : 'invert'} mr-2`}
                   />
-                  <p>{link.name}</p>
+                  <p className="hidden">{link.name}</p>
                 </div>
               )}
             </NavLink>
           ))}
           <div className="flex-grow"></div>
         </div>
-        <div className="flex gap-1 overflow-auto font-normal">
-          {links.slice(-2).map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) => styleIsActive(isActive)}
-            >
-              {link.name}
-            </NavLink>
-          ))}
+        <div className="flex gap-1 overflow-auto font-semibold">
+          <NavLink
+            to={links[links.length - 1].to}
+            className={({ isActive }) => styleIsActive(isActive)}
+          >
+            {links[links.length - 1].name}
+          </NavLink>
         </div>
       </nav>
 
       {/* For Mobile */}
       <nav
-        className="md:hidden bg-white text-gray-800 items-center font-semibold 
-      justify-center flex fixed bottom-0 w-full z-50 py-2 px-3 gap-7 text-2xl sm:gap-9 drop-shadow-2xl"
+        className="shadow-inner md:hidden bg-white text-gray-800 items-center font-semibold 
+      justify-center flex fixed bottom-0 w-full z-50 py-2 px-3 gap-4 text-2xl sm:gap-9"
       >
         {mobileLinks.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}
-            className="flex flex-col items-center px-4 py-1 rounded-xl "
+            className="px-4 py-1 rounded-xl md:shadow-inner"
           >
-            {({ isActive }) => (
-              <>
-                {isActive ? (
-                  <span className="text-gray-800">{link.icon}</span>
-                ) : (
-                  <span className="text-gray-600">{link.outlineIcon}</span>
-                )}
-                <p
-                  className={`${
-                    isActive ? "text-gray-800" : "text-gray-600"
-                  } text-center -mt-1 scroll text-xs`}
-                >
-                  {link.name}
-                </p>
-              </>
-            )}
+            {({ isActive }) => (isActive ? link.icon : link.outlineIcon)}
           </NavLink>
         ))}
       </nav>
