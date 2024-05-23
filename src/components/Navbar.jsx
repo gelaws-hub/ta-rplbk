@@ -33,9 +33,9 @@ const Navbar = () => {
   ];
 
   const mobileLinks = [
-    { name: "HomePage", to: "/", icon: <HiHome />, outlineIcon: <HiOutlineHome /> },
-    { name: "History", to: "/history", icon: <HiArchive />, outlineIcon: <HiOutlineArchive /> },
-    { name: "Help", to: "/help", icon: <HiQuestionMarkCircle />, outlineIcon: <HiOutlineQuestionMarkCircle /> },
+    { name: "Home", to: "/", icon: <HiHome size={30} />, outlineIcon: <HiOutlineHome size={30} /> },
+    { name: "History", to: "/history", icon: <HiArchive size={30} />, outlineIcon: <HiOutlineArchive size={30} /> },
+    { name: "Help", to: "/help", icon: <HiQuestionMarkCircle size={30} />, outlineIcon: <HiOutlineQuestionMarkCircle size={30} /> },
   ];
 
   const styleIsActive = (isActive) => {
@@ -88,12 +88,27 @@ const Navbar = () => {
       >
         {mobileLinks.map((link) => (
           <NavLink
-            key={link.to}
-            to={link.to}
-            className="px-4 py-1 rounded-xl md:shadow-inner"
-          >
-            {({ isActive }) => (isActive ? link.icon : link.outlineIcon)}
-          </NavLink>
+          key={link.to}
+          to={link.to}
+          className="flex flex-col items-center px-4 py-1 rounded-xl "
+        >
+          {({ isActive }) => (
+            <>
+              {isActive ? (
+                <span className="text-gray-800">{link.icon}</span>
+              ) : (
+                <span className="text-gray-600">{link.outlineIcon}</span>
+              )}
+              <p
+                className={`${
+                  isActive ? "text-gray-800" : "text-gray-600"
+                } text-center -mt-1 scroll text-xs`}
+              >
+                {link.name}
+              </p>
+            </>
+          )}
+        </NavLink>
         ))}
       </nav>
     </>
