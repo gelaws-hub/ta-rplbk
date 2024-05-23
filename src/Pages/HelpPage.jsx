@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const HelpPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [reportSuccess, setReportSuccess] = useState("");
-
   const handleReportError = (e) => {
     e.preventDefault();
     const errorReport = e.target.elements.errorReport.value;
@@ -12,9 +11,14 @@ const HelpPage = () => {
       `Error Report: ${errorReport}`
     )}`;
 
-    window.open(whatsappUrl, "_blank");
-    setReportSuccess("Redirecting to WhatsApp...");
-    e.target.reset();
+    try {
+      window.open(whatsappUrl, "_blank");
+      setReportSuccess("Redirecting to WhatsApp...");
+      setErrorMessage("");
+      e.target.reset();
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -30,7 +34,7 @@ const HelpPage = () => {
           <p>A: Select the shape you want to calculate, enter the required dimensions, and click "Calculate".</p>
 
           <h4 className="font-bold mt-4">Q2: What shapes can I calculate?</h4>
-          <p>A: You can calculate areas and perimeters for circles, squares, triangles, rectangles, ellipses, parallelograms, trapezoids, and rhombuses.</p>
+          <p>A: You can calculate areas and perimeters for circle, squares, triangles, rectangles, ellipses, parallelograms, trapezoids, and rhombuses.</p>
 
           <h4 className="font-bold mt-4">Q3: How do I delete a calculation from my history?</h4>
           <p>A: Go to the History page, find the calculation you want to delete, and click the "Delete" button.</p>
@@ -90,3 +94,4 @@ const HelpPage = () => {
 };
 
 export default HelpPage;
+

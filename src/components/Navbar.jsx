@@ -35,7 +35,7 @@ const Navbar = () => {
   const mobileLinks = [
     { name: "HomePage", to: "/", icon: <HiHome />, outlineIcon: <HiOutlineHome /> },
     { name: "History", to: "/history", icon: <HiArchive />, outlineIcon: <HiOutlineArchive /> },
-    { name: "FAQ", to: "/faq", icon: <HiQuestionMarkCircle />, outlineIcon: <HiOutlineQuestionMarkCircle /> },
+    { name: "Help", to: "/help", icon: <HiQuestionMarkCircle />, outlineIcon: <HiOutlineQuestionMarkCircle /> },
   ];
 
   const styleIsActive = (isActive) => {
@@ -48,7 +48,7 @@ const Navbar = () => {
     <>
       <nav className="hidden md:h-auto md:p-4 md:flex bg-gray-800 md:text-white md:items-center md:gap-8 md:justify-between">
         <div className="flex gap-1 overflow-auto font-semibold">
-          {links.slice(0, -1).map((link) => (
+          {links.slice(0, -2).map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -69,12 +69,15 @@ const Navbar = () => {
           <div className="flex-grow"></div>
         </div>
         <div className="flex gap-1 overflow-auto font-semibold">
-          <NavLink
-            to={links[links.length - 1].to}
-            className={({ isActive }) => styleIsActive(isActive)}
-          >
-            {links[links.length - 1].name}
-          </NavLink>
+          {links.slice(-2).map((link, index) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) => styleIsActive(isActive)}
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </div>
       </nav>
 
