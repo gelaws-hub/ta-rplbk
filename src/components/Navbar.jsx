@@ -33,9 +33,24 @@ const Navbar = () => {
   ];
 
   const mobileLinks = [
-    { name: "Home", to: "/", icon: <HiHome size={30} />, outlineIcon: <HiOutlineHome size={30} /> },
-    { name: "History", to: "/history", icon: <HiArchive size={30} />, outlineIcon: <HiOutlineArchive size={30} /> },
-    { name: "Help", to: "/help", icon: <HiQuestionMarkCircle size={30} />, outlineIcon: <HiOutlineQuestionMarkCircle size={30} /> },
+    {
+      name: "Home",
+      to: "/",
+      icon: <HiHome size={30} />,
+      outlineIcon: <HiOutlineHome size={30} />,
+    },
+    {
+      name: "History",
+      to: "/history",
+      icon: <HiArchive size={30} />,
+      outlineIcon: <HiOutlineArchive size={30} />,
+    },
+    {
+      name: "Help",
+      to: "/help",
+      icon: <HiQuestionMarkCircle size={30} />,
+      outlineIcon: <HiOutlineQuestionMarkCircle size={30} />,
+    },
   ];
 
   const styleIsActive = (isActive) => {
@@ -46,8 +61,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="hidden md:h-auto md:p-4 md:flex bg-gray-800 md:text-white md:items-center md:gap-8 md:justify-between">
-        <div className="flex gap-1 overflow-auto font-semibold">
+      <nav className="hidden md:h-auto md:p-4 md:flex md:flex-wrap bg-gray-800 md:text-white md:items-center md:gap-8 md:justify-between">
+        <div className="flex gap-1 overflow-auto font-normal flex-wrap">
           {links.slice(0, -2).map((link) => (
             <NavLink
               key={link.to}
@@ -55,21 +70,21 @@ const Navbar = () => {
               className={({ isActive }) => styleIsActive(isActive)}
             >
               {({ isActive }) => (
-                <div className="flex flex-row overflow font-semibold">
+                <div className="flex flex-row font-normal m-auto">
                   <img
                     src={link.icon}
                     alt={link.name}
-                    className={`h-6 ${isActive ? '' : 'invert'} mr-2`}
+                    className={`h-6 ${isActive ? "" : "invert"} mr-2`}
                   />
-                  <p className="hidden">{link.name}</p>
+                  <p>{link.name}</p>
                 </div>
               )}
             </NavLink>
           ))}
           <div className="flex-grow"></div>
         </div>
-        <div className="flex gap-1 overflow-auto font-semibold">
-          {links.slice(-2).map((link, index) => (
+        <div className="flex gap-1 overflow-auto font-normal">
+          {links.slice(-2).map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
@@ -88,27 +103,27 @@ const Navbar = () => {
       >
         {mobileLinks.map((link) => (
           <NavLink
-          key={link.to}
-          to={link.to}
-          className="flex flex-col items-center px-4 py-1 rounded-xl "
-        >
-          {({ isActive }) => (
-            <>
-              {isActive ? (
-                <span className="text-gray-800">{link.icon}</span>
-              ) : (
-                <span className="text-gray-600">{link.outlineIcon}</span>
-              )}
-              <p
-                className={`${
-                  isActive ? "text-gray-800" : "text-gray-600"
-                } text-center -mt-1 scroll text-xs`}
-              >
-                {link.name}
-              </p>
-            </>
-          )}
-        </NavLink>
+            key={link.to}
+            to={link.to}
+            className="flex flex-col items-center px-4 py-1 rounded-xl "
+          >
+            {({ isActive }) => (
+              <>
+                {isActive ? (
+                  <span className="text-gray-800">{link.icon}</span>
+                ) : (
+                  <span className="text-gray-600">{link.outlineIcon}</span>
+                )}
+                <p
+                  className={`${
+                    isActive ? "text-gray-800" : "text-gray-600"
+                  } text-center -mt-1 scroll text-xs`}
+                >
+                  {link.name}
+                </p>
+              </>
+            )}
+          </NavLink>
         ))}
       </nav>
     </>

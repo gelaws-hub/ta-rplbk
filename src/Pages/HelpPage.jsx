@@ -41,10 +41,10 @@ const HelpPage = () => {
           <p>A: Go to the History page, find the calculation you want to delete, and click the "Delete" button.</p>
 
           <h4 className="font-bold mt-4">Q4: How long did you guys make this project?</h4>
-          <p>A: We've spent roughly 2 to 3 weeks making this project, of course we are doing this only when we have free time, because there are still some other things we need to do. Just like real life</p>
+          <p>A: We'd spent roughly 2 to 3 weeks making this project, of course we were doing this only when we had free time, there were still some other things we need to do. Just like real life</p>
 
           <h4 className="font-bold mt-4">Q5: can I see the source code of this project?</h4>
-          <p>A: Yeah sure, just go over our github repo to view it <a className="text-blue-700 font-bold" href="https://github.com/gelaws-hub/ta-rplbk" >here</a></p>
+          <p>A: Yeah sure, just go over our github repo <a className="text-blue-700 font-bold" href="https://github.com/gelaws-hub/ta-rplbk" >here</a></p>
         </div>
       </div>
 
